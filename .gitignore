@@ -1,0 +1,11 @@
+.env
+.opencaptions/
+out/
+.venv/
+__pycache__/
+*.egg-info/
+data/
+*.mp4
+*.mov
+*.wav
+.pytest_cache/

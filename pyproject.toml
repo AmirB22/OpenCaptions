@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opencaptions"
+version = "0.1.0"
+description = "Cut a talking video down to selected sentences and burn in captions. Local, ffmpeg based."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "pillow",
+  "sherpa-onnx",
+  "fastapi",
+  "uvicorn",
+  "python-multipart",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+whisper = ["faster-whisper"]
+
+[project.scripts]
+opencaptions = "opencaptions.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["opencaptions*"]
+
+[tool.setuptools.package-data]
+opencaptions = ["web/static/*"]

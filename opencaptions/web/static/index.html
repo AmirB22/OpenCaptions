@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenCaptions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a href="#" id="home" class="name">OpenCaptions</a>
+  </header>
+
+  <main>
+    <section id="view-list">
+      <h1>Videos</h1>
+      <div class="drop-row">
+        <label id="drop" class="drop" tabindex="0">
+          <input type="file" id="file" accept="video/*" hidden>
+          <span class="drop-title">Drop a video here</span>
+          <span class="muted">or click to choose a file</span>
+        </label>
+        <label class="lang">Language <select id="language"></select></label>
+      </div>
+      <p id="upload-msg" class="muted"></p>
+      <table id="jobs" class="plain">
+        <thead><tr><th>Name</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p id="empty" class="muted" hidden>Nothing here yet.</p>
+    </section>
+
+    <section id="view-job" hidden>
+      <div class="bar">
+        <h1 id="job-name"></h1>
+        <button id="delete" type="button">Delete</button>
+      </div>
+      <p id="job-status" class="muted"></p>
+
+      <div id="work" class="cols" hidden>
+        <div class="col">
+          <video id="preview" controls playsinline></video>
+
+          <h2>Style</h2>
+          <div class="fields">
+            <label>Preset <select id="preset"></select></label>
+            <label>Font <select id="font"></select></label>
+            <label>Size <input type="number" id="size" min="20" max="200"></label>
+            <label>Distance from bottom <input type="number" id="margin" min="0" max="1200"></label>
+            <label>Letters
+              <select id="caps"><option value="false">Sentence case</option><option value="true">Capitals</option></select>
+            </label>
+            <label class="check"><input type="checkbox" id="accent"> Highlight the spoken word</label>
+            <label>Highlight colour <input type="color" id="accent-color"></label>
+            <label class="wide">Keep together <input type="text" id="brand" placeholder="Acme Coffee"></label>
+          </div>
+
+          <h2>Hook</h2>
+          <div class="fields">
+            <label class="wide">Text, shown at the top at the start
+              <textarea id="hook-text" rows="2" placeholder="WHERE I FINALLY FOUND MY&#10;FAVORITE COFFEE SHOP"></textarea>
+            </label>
+            <label>Look
+              <select id="hook-look"><option value="outline">Outline</option><option value="box">Rounded box</option><option value="band">Band</option></select>
+            </label>
+            <label>Font <select id="hook-font"></select></label>
+            <label>Size <input type="number" id="hook-size" min="30" max="260" value="90"></label>
+            <label>Distance from top <input type="number" id="hook-top" min="0" max="1200" value="200"></label>
+            <label>Seconds <input type="number" id="hook-seconds" min="1" max="30" step="0.1" value="4.3"></label>
+            <label>Text colour <input type="color" id="hook-color" value="#ffffff"></label>
+            <label id="hook-box-wrap">Box colour <input type="color" id="hook-box-color" value="#000000"></label>
+          </div>
+        </div>
+
+        <div class="col">
+          <h2>Transcript</h2>
+          <p class="muted hint">Tick the sentences to keep. Click a word to change it.</p>
+          <div class="tools">
+            <button type="button" id="all">Select all</button>
+            <button type="button" id="none">Clear</button>
+          </div>
+          <ol id="sentences"></ol>
+          <div class="sticky">
+            <span id="summary"></span>
+            <button type="button" id="render" class="primary">Render</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="results" hidden>
+        <h2>Results</h2>
+        <div id="result-list"></div>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
